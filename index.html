@@ -25,33 +25,65 @@
             <p>You <i>know</i> you want to.</p>
             </div>
         </section>
-        <form action="#" method="POST">
+        <form action="#" method="POST" name="myForm">
             <h2>Let's do this!</h2>
             <div class="name flexThis">
                 <div class="inputs">
                     <label for="first-name">FIRST NAME</label>
-                    <input type="text" id="first-name">
+                    <input type="text" requiredid="first-name"> 
                 </div>
                 <div class="inputs">
                     <label for="last-name">LAST NAME</label>
-                    <input type="text" id="last-name">
+                    <input type="text" requiredid="last-name"> 
                 </div>
             </div>
             <div class="contact flexThis">
                <div class="inputs">
                     <label for="email">EMAIL</label>
-                    <input type="email" id="email">
-               </div>
+                    <input type="email"required id="email">
+                </div>
                 <div class="inputs">
                     <label for="phone">PHONE NUMBER</label>
-                    <input type="tel" id="phone">
+                    <input type="tel" required id="phone"> 
                 </div>
             </div>
+            <div class="password flexThis">
+                <div class="inputs">
+                     <label for="pwd">PASSWORD</label>
+                     <input type="password"required id="pwd">
+                 </div>
+                 <div class="inputs">
+                     <label for="conpwd">CONFIRM PASSWORD</label>
+                     <input type="password" required id="conpwd"> 
+                 </div>
+             </div>
         </form>
         <section class="right-lower-part">
             <button type="submit">Create Account</button>
             <p>Already have an account? <a href="#">Log in</a></p>
         </section>
     </div>
+    <script>
+        const passwordInput = document.querySelector('#pwd')
+        const confirmPasswordInput = document.querySelector('#conpwd')
+
+        confirmPasswordInput.addEventListener('input', ()=> {
+            console.log('hello')
+            const pwdValue = passwordInput.value;
+            const confirmPwdValue = confirmPasswordInput.value
+            if(pwdValue!= confirmPwdValue) {
+                passwordInput.style.borderColor = 'red'
+                confirmPasswordInput.style.borderColor = 'red'
+                confirmPasswordInput.setCustomValidity("Passwords don't match");
+            }
+            else {
+                // If the values match, reset the border color and error message
+                passwordInput.style.borderColor = '';
+                confirmPasswordInput.style.borderColor = '';
+                confirmPasswordInput.setCustomValidity('');
+           }
+
+        })
+    </script>
 </body>
 </html>

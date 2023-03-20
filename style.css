@@ -53,28 +53,12 @@ form {
     flex-grow: 3;
     border: 2px solid red;
 }
-/* .flexThis {
-    display: flex;
-}
-form input[type] {
-    width: 100%;
-    margin: 20px;
-    border: 2px solid blue;
-
-}
-.inputs {
-    text-align: left;
-}
-.contact, .name {
-    display:flex;
-    border: 2px solid green;
-    justify-content: space-around;
-} */
-
+/*form basic*/
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 20px 0 30px;
   }
   
   .flexThis {
@@ -97,7 +81,8 @@ form {
   
   input[type="text"],
   input[type="email"],
-  input[type="tel"] {
+  input[type="tel"],
+  input[type="password"] {
     padding: 10px;
     margin-bottom: 15px;
     width: 100%;
@@ -125,3 +110,12 @@ form {
       font-size: 16px;
     }
   }
+
+  /*inputs focus styling*/
+  input:focus {
+    outline: none;
+    border-color: #665df5;
+    box-shadow: 0 0 2px #665df5;
+}
+
+/**/
