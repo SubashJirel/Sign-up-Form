@@ -51,6 +51,7 @@
                 <div class="inputs">
                      <label for="pwd">PASSWORD</label>
                      <input type="password"required id="pwd">
+                     <span id="wrongPwd" class="hide">*Passwords do not match</span>
                  </div>
                  <div class="inputs">
                      <label for="conpwd">CONFIRM PASSWORD</label>
@@ -67,23 +68,28 @@
         const passwordInput = document.querySelector('#pwd')
         const confirmPasswordInput = document.querySelector('#conpwd')
 
-        confirmPasswordInput.addEventListener('input', ()=> {
-            console.log('hello')
+        confirmPasswordInput.addEventListener('input',passwordChecker)
+        passwordInput.addEventListener('input', passwordChecker)
+        function passwordChecker() {
             const pwdValue = passwordInput.value;
             const confirmPwdValue = confirmPasswordInput.value
-            if(pwdValue!= confirmPwdValue) {
+            if(confirmPwdValue.length!=0) { //check only after user starts to type the confirm password
+                if(pwdValue!= confirmPwdValue) {
                 passwordInput.style.borderColor = 'red'
                 confirmPasswordInput.style.borderColor = 'red'
                 confirmPasswordInput.setCustomValidity("Passwords don't match");
-            }
-            else {
+                document.querySelector('#wrongPwd').classList.remove('hide')
+                }
+                else {
                 // If the values match, reset the border color and error message
                 passwordInput.style.borderColor = '';
                 confirmPasswordInput.style.borderColor = '';
                 confirmPasswordInput.setCustomValidity('');
+                document.querySelector('#wrongPwd').classList.add('hide')
            }
-
-        })
+       }
+            
+    }
     </script>
 </body>
 </html>
